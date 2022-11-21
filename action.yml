@@ -3,3 +3,10 @@ description: 'プルリクエストの情報をJson化'
 inputs:
   pullRequestNumber:
     description: 'PullRequest Number'
+runs:
+  using: "composite"
+  steps:
+    - name: View context attributes
+      uses: actions/github-script@v6
+      with:
+        script: console.log(context)
