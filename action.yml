@@ -1,0 +1,56 @@
+name: 'PullRequest to Json'
+description: 'プルリクエストの情報をJson化'
+inputs:
+  pullRequestNumber:
+    description: 'PullRequest Number'
+    required: true
+    default: '1'
+outputs:
+  result:
+    description: 'PullRequest data'
+    value: ${{steps.parse.outputs.result}}
+runs:
+  using: "composite"
+  steps:
+    - name: View context attributes
+      id: parse
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const number = '${{inputs.pullRequestNumber}}';
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+
+          const pull = await github.rest.pulls.get({
+            owner: owner,
+            repo: repo,
+            pull_number: number
+          });
+
+          const event = await github.rest.issues.listEvents({
+            owner: owner,
+            repo: repo,
+            issue_number: number,
+          });
+          console.log(event);
+          const readyForReview = event.data.filter(e => e.event == 'ready_for_review');
+
+          const result = {
+            owner: owner,
+            repo: repo,
+            pull_number: number,
+            title: pull.data.title,
+            user: pull.data.user.login,
+            created_at: pull.data.created_at,
+            merged_at: pull.data.merged_at,
+            first_ready_for_review_at: readyForReview[0].created_at,
+            last_ready_for_review_at: readyForReview[readyForReview.length - 1].created_at,
+            head: pull.data.head.ref,
+            base: pull.data.base.ref,
+            commits: pull.data.commits,
+            additions: pull.data.additions,
+            deletions: pull.data.deletions,
+            changed_files: pull.data.changed_files,
+          };
+          console.log(result);
+          return result;
