@@ -8,6 +8,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: PullRequest Number
+      run: echo '${{github.event.inputs.pullRequestNumber}}'
     - name: View context attributes
       uses: actions/github-script@v6
       with:
