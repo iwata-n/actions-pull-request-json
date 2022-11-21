@@ -10,18 +10,18 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
-        const number = context.issue.number;
-        const owner = context.repo.owner;
-        const repo = context.repo.repo;
-        const pull = github.rest.pulls.get({
-          owner,
-          repo,
-          number
-        });
-        console.log(pull);
-        const result = {
-          owner: owner,
-          repo: repo,
-          number: number
-        };
-        console.log(result);
+          const number = context.issue.number;
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          const pull = github.rest.pulls.get({
+            owner,
+            repo,
+            number
+          });
+          console.log(pull);
+          const result = {
+            owner: owner,
+            repo: repo,
+            number: number
+          };
+          console.log(result);
