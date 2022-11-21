@@ -1,0 +1,5 @@
+name: 'PullRequest to Json'
+description: 'プルリクエストの情報をJson化'
+inputs:
+  pullRequestNumber:
+    description: 'PullRequest Number'
