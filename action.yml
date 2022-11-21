@@ -10,7 +10,7 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
-          console.log(${{github.event.inputs.pullRequestNumber}});
+          console.log(${{github.event.inputs}});
           const number = '${{github.event.inputs.pullRequestNumber}}';
           const owner = context.repo.owner;
           const repo = context.repo.repo;
