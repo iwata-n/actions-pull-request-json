@@ -12,15 +12,14 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
-          console.log(process.env);
           const number = '${{inputs.pullRequestNumber}}';
           const owner = context.repo.owner;
           const repo = context.repo.repo;
 
           const pull = github.rest.pulls.get({
-            owner,
-            repo,
-            number
+            owner: owner,
+            repo: repo,
+            pull_number: number
           });
 
           console.log(pull);
