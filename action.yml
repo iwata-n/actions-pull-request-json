@@ -16,7 +16,7 @@ runs:
           const owner = context.repo.owner;
           const repo = context.repo.repo;
 
-          const pull = github.rest.pulls.get({
+          const pull = await github.rest.pulls.get({
             owner: owner,
             repo: repo,
             pull_number: number
