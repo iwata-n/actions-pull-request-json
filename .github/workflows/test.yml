@@ -11,8 +11,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Run
         id: set-result
         uses: iwata-n/actions-pull-request-json@main

@@ -1,0 +1,19 @@
+name: Merged
+
+on:
+  pull_request:
+    closed
+
+jobs:
+  merged:
+    runs-on: ubuntu-latest
+    - name: Get PullRequest number
+      id: pr-number
+      uses: actions/github-script@v6
+      with:
+        script: return context.issue.number;
+    - name: Run
+      id: set-result
+      uses: iwata-n/actions-pull-request-json@main
+      with:
+        pullRequestNumber: ${{steps.pr-number.outputs.result}}
