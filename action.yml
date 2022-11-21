@@ -8,14 +8,12 @@ runs:
   steps:
     - name: View context attributes
       uses: actions/github-script@v6
-      env:
-        PULL_REQUEST_NUMBER: github.event.inputs.pullRequestNumber
       with:
         script: |
-          console.log(process.env);
-          const number = process.env.PULL_REQUEST_NUMBER;
+          const number = ${{github.event.inputs.pullRequestNumber}};
           const owner = context.repo.owner;
           const repo = context.repo.repo;
+          console.log("number=" + number);
           const pull = github.rest.pulls.get({
             owner,
             repo,
