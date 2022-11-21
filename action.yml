@@ -3,6 +3,7 @@ description: 'プルリクエストの情報をJson化'
 inputs:
   pullRequestNumber:
     description: 'PullRequest Number'
+    required: true
     default: '1'
 runs:
   using: "composite"
