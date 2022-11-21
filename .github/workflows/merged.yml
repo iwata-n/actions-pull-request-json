@@ -5,7 +5,7 @@ on:
     closed
 
 jobs:
-  merged:
+  PullRequestMerged:
     runs-on: ubuntu-latest
     - name: Get PullRequest number
       id: pr-number
