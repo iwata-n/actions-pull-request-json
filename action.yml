@@ -8,14 +8,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: PullRequest Number
-      run: echo '${{github.event.inputs.pullRequestNumber}}'
     - name: View context attributes
       uses: actions/github-script@v6
       with:
         script: |
           console.log(process.env);
-          const number = '${{github.event.inputs.pullRequestNumber}}';
+          const number = '${{inputs.pullRequestNumber}}';
           const owner = context.repo.owner;
           const repo = context.repo.repo;
 
