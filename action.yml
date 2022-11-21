@@ -10,16 +10,19 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
-          const number = ${{github.event.inputs.pullRequestNumber}};
+          console.log(${{github.event.inputs.pullRequestNumber}});
+          const number = '${{github.event.inputs.pullRequestNumber}}';
           const owner = context.repo.owner;
           const repo = context.repo.repo;
-          console.log("number=" + number);
+
           const pull = github.rest.pulls.get({
             owner,
             repo,
             number
           });
+
           console.log(pull);
+
           const result = {
             owner: owner,
             repo: repo,
