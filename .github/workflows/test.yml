@@ -16,4 +16,4 @@ jobs:
       - name: Run
         uses: iwata-n/actions-pull-request-json@main
         with:
-          pullRequstNumber: ${{github.event.inputs.pull_request_number}}
+          pullRequestNumber: ${{github.event.inputs.pull_request_number}}
