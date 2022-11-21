@@ -27,6 +27,16 @@ runs:
           const result = {
             owner: owner,
             repo: repo,
-            number: number
+            pull_number: number,
+            title: pull.data.title,
+            user: pull.data.user.login,
+            created_at: pull.data.created_at,
+            merged_at: pull.data.merged_at,
+            head: pull.data.head.ref,
+            base: pull.data.base.ref,
+            commits: pull.data.commits,
+            additions: pull.data.additions,
+            deletions: pull.data.deletions,
+            changed_files: pull.data.changed_files
           };
           console.log(result);
