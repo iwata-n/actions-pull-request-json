@@ -36,8 +36,8 @@ runs:
           let first_ready_for_review_at = null;
           let last_ready_for_review_at = null;
           if (readyForReview.length > 0) {
-            first_ready_for_review_at = readyForReview[0].created_at,
-            last_ready_for_review_at = readyForReview[readyForReview.length - 1].created_at,
+            first_ready_for_review_at = readyForReview[0].created_at;
+            last_ready_for_review_at = readyForReview[readyForReview.length - 1].created_at;
           }
 
           const result = {
