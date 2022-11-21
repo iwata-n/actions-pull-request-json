@@ -32,7 +32,6 @@ runs:
             repo: repo,
             issue_number: number,
           });
-          console.log(event);
           const readyForReview = event.data.filter(e => e.event == 'ready_for_review');
 
           const result = {
@@ -52,5 +51,4 @@ runs:
             deletions: pull.data.deletions,
             changed_files: pull.data.changed_files,
           };
-          console.log(result);
           return result;

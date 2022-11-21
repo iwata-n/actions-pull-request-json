@@ -1,11 +1,11 @@
-name: Merged
+name: Closed
 
 on:
   pull_request:
     types: [ closed ]
 
 jobs:
-  PullRequestMerged:
+  PullRequestClosed:
     runs-on: ubuntu-latest
     steps:
       - name: Get PullRequest number
@@ -18,3 +18,5 @@ jobs:
         uses: iwata-n/actions-pull-request-json@main
         with:
           pullRequestNumber: ${{steps.pr-number.outputs.result}}
+      - name: Get result steps
+        run: echo ${{steps.set-result.outputs.result}}
